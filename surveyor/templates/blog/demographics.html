@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 style="padding-left: 1%"> Demographics </h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    <h3>Please select your gender:</h3>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label><br>
+    <input type="radio" id="female" name="gender" value="female">
+    <label for="female">Female</label><br>
+    <input type="radio" id="other" name="gender" value="other">
+    <label for="other">Other</label>
+  
+    <br>  
+  
+    <h3>Please enter your age:</h3>
+    <input style="width: 10%;" type="number" id="age" name="age"
+       min="18" max="100">
+
+    <br>
+
+    <h3>Do you have professional experience in Supply Chain Management?:</h3>
+    <input type="radio" id="sc_yes" name="sc" value=1>
+    <label for="sc_yes">Yes</label><br>
+    <input type="radio" id="sc_no" name="sc" value=0>
+    <label for="sc_no">No</label><br>
+
+    <br>
+    
+    <h3>Do you have professional experience in Procurement?:</h3>
+    <input type="radio" id="procurement_yes" name="procurement" value=1>
+    <label for="sc_yes">Yes</label><br>
+    <input type="radio" id="procurement_no" name="procurement" value=0>
+    <label for="sc_no">No</label><br>
+    
+    
+    <input type="submit" value="Next">
+  </form>
+  
+{% endblock %}

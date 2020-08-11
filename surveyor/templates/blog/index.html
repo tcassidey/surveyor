@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 style="padding-left: 1%"> Instructions </h1>
+{% endblock %}
+
+{% block content %}
+
+<hr>
+<h2>A Behavioral Study on Make or Buy Decisions in a Supply Chain</h2>
+<p>We are conducting a research study to understand how people make decisions 
+regarding the production and procurement of goods when a single unreliable 
+supplier is available and demand is uncertain.</p> 
+
+<p>As part of the study, you will be asked to complete brief surveys to 
+determine your cognitive and risk profiles. The surveys will each take 
+approximately 7 minutes to complete. 
+First you will complete the cognitive survey, then you will participate 
+in a simulation that will take approximately 90 minutes, 
+and then you will complete the risk profile survey.
+</p>
+
+<p>Participation in this research study is voluntary and there is no penalty 
+for not participating or completing the exercise. However, if you 
+complete the exercise, the instructor of the class will award credit towards 
+your course grade. The amount of credit you receive may depend on your 
+performance in the simulation part of the study.
+</p>
+
+<p>Your participation in this project is confidential and your responses
+will remain anonymous. While you will not directly benefit from participation, 
+other than course credit, your contribution may help researchers better 
+understand how decision-makers make sourcing decisions under uncertainty.
+</p>
+
+<script>
+    function set_anchor() {
+      location.hash = "anchor";
+    }
+</script>
+<a name='anchor' id='anchor' href='anchor'></a>
+<h2>Simulation Instructions</h2>
+<p>Please read these instructions carefully, <b>you can return to this page at 
+    any time during the survey.</b></p>
+    
+    <img src={{fig_url}} style="padding-left: 22%; height:250px; width:auto;">
+
+    <audio controls autoplay style="padding-left: 30%;">
+        <source src={{slide_recording}} type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+    <p style="color:#377ba8; font-weight: bold;">{{slide_caption}}</p>
+    <form method="post" style="display: inline; padding-left: 30%">
+        
+        <input type='submit' name='action' id='action' 
+        value='Previous Slide'
+        onclick="set_anchor()"
+        style="height:20px; 
+            width:20px;
+            display:inline-block;" ></input>
+
+        <input type='submit' name='action' id='action' 
+                    value='Next Slide'
+                    onclick="set_anchor()"
+                    style="height:20px; 
+                        width:20px;
+                        display: inline-block;
+                        margin-left:5%" ></input>
+    </form>
+<hr>
+<b>When you have finished the instructions presentation 
+    <a href="{{ url_for('blog.survey') }}">click here</a>, 
+    or go to the simulation link at the top of this page!</b>
+
+{% endblock %}

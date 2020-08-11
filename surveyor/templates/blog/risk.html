@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 style="padding-left: 1%"> Preferences Survey </h1>
+{% endblock %}
+
+{% block content %}
+<h3 style="color:grey">For each of the following statements, please indicate 
+    the likelihood that you would engage in the described activity or behavior 
+    if you were to find yourself 
+    in that situation. Slide the bar next to each question to indicate that 
+    likelihood, with far left being "Extremely Unlikely" 
+    and far right being "Extremely Likely".</h3>
+<form method="post">
+
+    {% for key, val in question_dict.items() %}
+    <h3>{{val}}</h3>
+    <fieldset>
+        <label for="{{key}}">Likelihood:</label>
+        <input type ="range" max="10" min="0"
+            oninput="document.getElementById('{{key}}').innerHTML = this.value;"
+            step="1" name="{{key}}" id="{{key}}" value="5" required>
+        </input>
+        <em id="{{key}}" style="font-style: normal;"></em>
+    </fieldset>
+    {% endfor %}
+
+    <hr>
+    <h3 style="color:grey">For each of the choice sets below, pick one of the two options.
+        Each option represents a coin flip between two point options. 
+        For example, if you chose "50% chance of either 10 points or 5 points",
+        the computer will flip a coin and you will either get 10 points or 5 
+        points.
+    </h3>
+    {% for key, val in risk_preference_dict.items() %}
+    <hr>
+    <h4>Pick one of two options:</h4>
+    <input type="radio" id="{{key}}" name="{{key}}" value=0 required>
+    <label>{{val[0]}}</label><br>
+    <input type="radio" id="{{key}}" name="{{key}}" value=1 required>
+    <label>{{val[1]}}</label><br>
+    {% endfor %}
+     
+    <input type="submit" value="Next">
+  </form>
+  
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 style="padding-left: 1%"> Cognitive Survey </h1>
+{% endblock %}
+
+{% block content %}
+
+<form method="post">
+    <h3>Please answer these questions to the best of your ability 
+        (do NOT use any external resource).</h3>
+
+    <label for="CRT1">A bat and a ball cost $1.10 in total. The bat costs a 
+        dollar more than the ball. How much does the ball cost? </label><br>
+    <label for="CRT1">cents ($)</label>
+    <input style="width: 10%;" type="number" step="1" id="CRT1" name="CRT1"
+        min="0" required><br>
+
+    <label for="CRT2">If it takes 5 machines 5 minutes to make 5 widgets, how 
+        long would it take 100 machines to make 100 widgets?</label><br>
+    <label for="CRT2">minutes</label>
+    <input style="width: 10%;" type="number" step="1" id="CRT2" name="CRT2"
+        min="0" required><br>
+
+    <label for="CRT3">In a lake, there is a patch of lily pads. Every day, the 
+        patch doubles in size. If it takes 48 days for the patch to cover the 
+        entire lake, how long would it take for the patch to cover half of the 
+        lake?</label><br>
+    <label for="CRT3">days</label>
+    <input style="width: 10%;" type="number" step="1" id="CRT3" name="CRT3"
+        min="0" required><br>
+
+    <label for="CRT4">If John can drink one barrel of water in 6 days, and 
+        Mary can drink one barrel of water in 12 days, how long would it take 
+        them to drink one barrel of water together?</label><br>
+    <label for="CRT4">days</label>
+    <input style="width: 10%;" type="number" step="1" id="CRT4" name="CRT4"
+        min="0" required><br>
+
+    <label for="CRT5">Jerry received both the 15th highest and the 15th lowest 
+        mark in the class.How many students are in the class?</label><br>
+    <label for="CRT5">students</label>
+    <input style="width: 10%;" type="number" step="1" id="CRT5" name="CRT5"
+        min="0" required><br>
+
+    <label for="CRT6">A man buys a pig for $60, sells it for $70, buys it back 
+        for $80, and sells it finally for $90. How much has he made?</label><br>
+    <label for="CRT6">dollars ($)</label>
+    <input style="width: 10%;" type="number" step="1" id="CRT6" name="CRT6"
+        min="0" required><br>
+
+    <label for="CRT7">Simon decided to invest $8,000 in the stock market one day 
+        early in 2008. Six months after he invested, on July 17, the stocks he 
+        had purchased were down 50%. Fortunately for Simon, from July 17 to 
+        October 17, the stocks he had purchased went up 75%. At this point, 
+        Simon has</label><br>
+    <label for="CRT7">dollars ($)</label>
+    <input style="width: 10%;" type="number" step="1" id="CRT7" name="CRT7"
+        min="0" required>
+
+    <input type="submit" value="Next">
+</form>
+
+  
+{% endblock %}

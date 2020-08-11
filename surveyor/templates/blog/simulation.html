@@ -1,0 +1,196 @@
+{% extends 'base_simulation.html' %}
+
+
+
+{% block header %}
+<div style="width: 100%; display: table; border-collapse: collapse;">
+    <div style="display: table-row">
+        <h2 style="padding-left: 1%; "> Simulation </h2>
+        <h3 style="padding-left: 1%; display: table-cell; 
+                    color:grey;"> Current Period: {{simulation_period}}</h3>
+        <script>
+            function set_anchor() {
+              location.hash = "anchor";
+            }
+        </script>
+        <a name='anchor' id='anchor' href='anchor'></a>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div style="display:table; width:100%">
+<div style="display: table-row">
+
+<div style="display: table-cell; width: 60%;">
+<div style="display: table;">
+    <div style="display: table-row; ">
+        <div style="display: table-cell; width: 30%; border-top: solid 2px grey;">
+            <h4>Problem Setting</h4>
+        </div>
+
+        <div style="display: table-cell; width: 30%; 
+                text-align: center; 
+                border-top: solid 2px grey;">
+            <h4>Submit Decisions</h4>
+            {% if display_dict['decision_n_errors'] > 0 %}
+            {% for error in display_dict['decision_errors'] %}
+            <h4 style="color: red">{{error}}</h4>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        
+    </div>
+
+    <div style="display: table-row;">
+        <div style="display: table-cell;
+                    font-size: 12px; width:10%;
+                    border-top: solid 2px grey;
+                    border-right: solid 2px grey;
+                    border-bottom: solid 2px grey;">
+            <p>Sales price of finished product: 
+                <b>${{display_dict['p']}}</b>
+            </p> 
+            <p>Cost to order component from the supplier:
+                <b>${{display_dict['v']}}</b>
+            </p>
+        </div>
+        
+        <div style="display: table-cell; 
+                    border-top: solid 2px grey;
+                    border-bottom: solid 2px grey;
+                    border-right: solid 2px grey;">
+            <form method="post" style="padding-left: 5%;">
+
+                <div class="block">
+                    <input type='number' id='decision_Q' name='decision_Q' min=0 
+                    value={{display_dict['decision_Q']}} 
+                    style="width: 10%; margin-left: 20%">
+                    <label for="decision_Q"
+                        style="font-size: 12px; 
+                            display:inline-block; 
+                            text-align: left;
+                            width:140px">
+                    Order from Supplier
+                    </label>
+                </div>
+                
+                <input type='submit' name='action' id='action' 
+                value='Submit'
+                onclick="set_anchor()"
+                style="height:20px; 
+                    width:20px; 
+                    margin-top: 7px; 
+                    margin-left: 20%;" ></input>
+            </form> 
+        </div>        
+    </div>
+
+    <div style="display: table-row; ">
+        <div style="display: table-cell; 
+                    border-right: solid 2px grey;">
+            <h4>Dashboard</h4>
+        </div>
+
+        <div style="display: table-cell;
+                    text-align: center;
+                    border-right: solid 2px grey;">
+            <h4>Calculate Decisions</h4>
+            {% if display_dict['calc_n_errors'] > 0 %}
+            {% for error in display_dict['calc_errors'] %}
+            <h4 style="color: red">{{error}}</h4>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div style="display: table-row;">
+        <div style="display: table-cell;
+        border-top: solid 2px grey; 
+        border-right: solid 2px grey;
+        border-bottom: solid 2px grey;">
+
+            <h5>Recommendations:</h5>
+            <p style="font-size: 12px;">Order from Supplier:
+                <b style="color:green">{{display_dict['Q_rec']}}</b>
+            </p>
+
+            <img src={{fig_url}} style="padding-top: 0%; max-width: 500px;">
+        </div>
+
+        <div style="display: table-cell; 
+                    border-top: solid 2px grey;
+                    border-bottom: solid 2px grey;
+                    border-right: solid 2px grey;">
+            <form method="GET" style="padding-left: 5%;">
+                <div class="block">
+                    <input type='number' id='calc_Q' name='calc_Q' min=0  
+                    value={{display_dict['calc_Q']}} 
+                    style="width: 10%; margin-left: 20%">
+                    <label for="calc_Q"
+                        style="font-size: 12px; 
+                            display:inline-block; 
+                            text-align: left;
+                            width:140px">
+                    Order from Supplier
+                    </label>
+                </div>
+                
+                <input type='submit' name='action' id='action' 
+                value='Calculate'
+                onclick="set_anchor()"
+                style="height:20px; 
+                    width:20px; 
+                    margin-top: 7px; 
+                    margin-left: 20%;" ></input>
+            </form> 
+            
+            
+            <div style="padding-left: 3%;">
+                <hr style="border-top: 2px solid grey; 
+                            margin-right: 3%;
+                            border-style: dashed;  border-color:grey;">
+                <h5>Calculation Output:</h5>
+                <p style="font-size: 12px;">Order from Supplier:
+                    <b>{{display_dict['calc_Q']}}</b>
+                </p>
+                <p style="font-size: 12px;">Expected Profit:
+                    <b>${{display_dict['expected_profit']}}</b>
+                </p>
+            </div>
+            
+
+        </div>
+    </div>
+</div> <!-- First Table Close-->
+</div> <!-- First table-cell Close-->
+
+
+<div style="display: table-cell; width: 40%">
+    <div style="display: table;">
+        <div style="display: table-row; ">
+            <div style="display: table-cell; 
+                    border-top: solid 2px grey;
+                    text-align: right;">
+                <h4>Historical Table</h4>
+            </div>
+        </div>
+
+        <div style="display: table-row; border-top: solid 2px grey;">
+            <div style="display: table-cell; 
+                        border-top: solid 2px grey;
+                        border-left: solid 2px grey;
+                        border-bottom: solid 2px grey;
+                        text-align: right;
+                        font-size: 12px;">
+                <p>{{historical_table|safe}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>  <!-- Screen Table Row Close -->
+</div>  <!-- Screen Table Close -->
+{% endblock %}

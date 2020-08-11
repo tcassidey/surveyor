@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 style="padding-left: 1%"> Thank you! The survey is complete! </h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+<label>Please share your feedback below:</label>
+<textarea type='text' 
+        id='feedback_input'
+        name='feedback_input'
+        style="size:400px"
+        placeholder="type here"></textarea>
+<input type="submit" value="Submit">
+</form>
+{% endblock %}

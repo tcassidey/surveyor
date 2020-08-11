@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 style="padding-left: 1%"> Preferences Survey </h1>
+{% endblock %}
+
+{% block content %}
+{% for answer in answer_list %}
+<h3 style="color:grey">{{answer}}</h3>
+{% endfor %}
+<h4>Rank your level of regret below by sliding the vertical bar, 
+    with far left being "No regret" and 
+    far right being "Extreme Regret".
+</h4>
+
+<form method="post">
+<fieldset>
+    <input type ="range" max="10" min="0"
+        oninput="document.getElementById('rangeValLabel').innerHTML = this.value;"
+        step="1" name="RP10" id="RP10" value="5" required>
+    </input>
+    <em id="rangeValLabel" style="font-style: normal;"></em>
+</fieldset>
+<br>
+<input type="submit" value="Submit">
+</form>
+{% endblock %}

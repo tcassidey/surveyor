@@ -1,0 +1,48 @@
+<!doctype html>
+
+<link rel="stylesheet" href="../static/style.css">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+<nav>
+  <ul>
+  {% if g.user %}
+  <li><a href="{{ url_for('blog.index') }}">Home</a></li>
+  <li><a href="{{ url_for('blog.survey') }}">Simulation</a></li>
+</ul>
+    {% endif %}
+  <h1 align="center">
+    <a href="{{ url_for('blog.index') }}">Concurrent Sourcing Survey</a>
+</h1>
+
+  <ul>
+    {% if g.user %}
+      <!-- <li><span>{{ g.user['username'] }}</span>
+      <li><span>{{ g.user['department'] }}</span>   --> 
+      <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% else %}
+      <li><a href="{{ url_for('auth.register') }}">Register</a>
+      <li><a href="{{ url_for('auth.login') }}">Log In</a>
+    {% endif %}
+  </ul>
+</nav>
+
+
+{% block header %}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+<section class="content">
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+{% block content %}
+{% endblock %}
+</section>
+
+
+
+
+
