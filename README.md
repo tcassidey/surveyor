@@ -1,4 +1,4 @@
-# surveyor changed
+# surveyor
 
 This is a python 3 package. This package was designed with Flask to deliver
 surveys for behavioral experiments. Some knowledge of the Flask API is 
