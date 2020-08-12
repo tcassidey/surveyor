@@ -2,7 +2,7 @@
 
 This is a python 3 package. This package was designed with Flask to deliver
 surveys for behavioral experiments. Some knowledge of the Flask API is 
-assumed. The experiments below are for a Windows OS.
+assumed. The directions below are for a Windows OS.
 
 1. Ensure that you have virtualenv installed with `pip list`.
 2. If you do not have virtualenv installed. Install it with 
